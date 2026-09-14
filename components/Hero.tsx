@@ -24,7 +24,7 @@ function StatusPill({
   }[tone]
 
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${styles}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-semibold ${styles}`}>
       {tone === 'approved' && (
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
           <path d="M5 12l5 5L20 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -37,17 +37,22 @@ function StatusPill({
 
 function MonitoringSlide() {
   const rows = [
-    { score: 92, entity: 'Apex Logistics Ltd', status: 'review' as const, statusLabel: 'Under review', type: 'Wire', amount: 'KES 1.45M' },
-    { score: 18, entity: 'Grace Wanjiku', status: 'approved' as const, statusLabel: 'Cleared', type: 'P2P', amount: 'KES 12,400' },
-    { score: 76, entity: 'Serenity Holdings', status: 'pending' as const, statusLabel: 'Awaiting evidence', type: 'ACH', amount: 'USD 48,200' },
+    { score: 92, entity: 'Apex Logistics Ltd', status: 'review' as const, statusLabel: 'Under review', type: 'RTGS', amount: 'KES 1.45M' },
+    { score: 18, entity: 'Grace Wanjiku', status: 'approved' as const, statusLabel: 'Cleared', type: 'M-Pesa', amount: 'KES 12,400' },
+    { score: 76, entity: 'Serenity Holdings', status: 'pending' as const, statusLabel: 'Awaiting evidence', type: 'SWIFT', amount: 'USD 48,200' },
     { score: 31, entity: 'Orbit Payments', status: 'approved' as const, statusLabel: 'Cleared', type: 'Card', amount: 'KES 89,050' },
   ]
 
   return (
     <div>
       <div className="mb-4 flex items-center justify-between gap-3">
-        <div className="text-sm font-semibold text-[var(--text)]">Live monitoring</div>
-        <div className="text-[11px] font-medium text-[var(--text-dim)] tabular-nums">Updated 2s ago</div>
+        <div>
+          <div className="text-sm font-semibold text-[var(--text)]">Live monitoring</div>
+          <p className="text-[12px] text-[var(--text-dim)] mt-1 leading-snug">
+            See which rules fired — and why
+          </p>
+        </div>
+        <div className="text-[11px] font-medium text-[var(--text-dim)] tabular-nums shrink-0">Updated 2s ago</div>
       </div>
       <div className="overflow-x-auto rounded-xl border border-[var(--border)] bg-[var(--bg)] -mx-1 px-0">
         <div className="min-w-[520px]">
@@ -55,7 +60,7 @@ function MonitoringSlide() {
             <span>Score</span>
             <span>Entity</span>
             <span>Status</span>
-            <span>Type</span>
+            <span>Rail</span>
             <span>Amount</span>
           </div>
           <div className="divide-y divide-[var(--border)]">
@@ -83,7 +88,12 @@ function MonitoringSlide() {
 function AlertSlide() {
   return (
     <div>
-      <div className="mb-5 text-sm font-semibold text-[var(--text)]">Explainable alert</div>
+      <div className="mb-5">
+        <div className="text-sm font-semibold text-[var(--text)]">Explainable alert</div>
+        <p className="text-[12px] text-[var(--text-dim)] mt-1 leading-snug">
+          Every condition that fired — with measured values
+        </p>
+      </div>
       <div className="hero-alert-panel rounded-xl border border-[var(--border)] bg-[var(--bg)]">
         <div className="flex items-start justify-between gap-4 mb-6">
           <div className="min-w-0 pr-2">
@@ -122,7 +132,12 @@ function AlertSlide() {
 function CaseSlide() {
   return (
     <div>
-      <div className="mb-5 text-sm font-semibold text-[var(--text)]">Case workspace</div>
+      <div className="mb-5">
+        <div className="text-sm font-semibold text-[var(--text)]">Case workspace</div>
+        <p className="text-[12px] text-[var(--text-dim)] mt-1 leading-snug">
+          Investigation trail ready for compliance sign-off
+        </p>
+      </div>
       <div className="hero-alert-panel rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-5">
         <div className="flex items-center justify-between gap-3">
           <div>
@@ -162,19 +177,6 @@ const slideMeta = [
   { id: 'case', label: 'Cases' },
 ] as const
 
-function FloatingAlertChip() {
-  return (
-    <div className="hero-alert-chip absolute -left-5 top-8 z-20 w-[300px] rounded-2xl border border-[var(--border)] bg-white shadow-[var(--shadow-card)] hidden md:block fade-up fade-up-delay-3">
-      <div className="flex items-start justify-between gap-4 mb-3">
-        <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-red-600">High alert</div>
-        <div className="text-xl font-bold tabular-nums text-red-600 leading-none">92</div>
-      </div>
-      <div className="text-[15px] font-semibold text-[var(--text)] leading-snug mb-2">Rapid movement</div>
-      <div className="text-[12px] text-[var(--text-dim)] leading-relaxed">3 conditions met · evidence attached</div>
-    </div>
-  )
-}
-
 function ProductCarousel() {
   const [index, setIndex] = useState(0)
 
@@ -187,11 +189,7 @@ function ProductCarousel() {
 
   return (
     <div className="relative w-full max-w-[620px] ml-auto">
-      <FloatingAlertChip />
-      <div className="absolute -top-3 left-6 z-20 hidden md:inline-flex items-center rounded-full border border-[var(--border)] bg-white px-3.5 py-1.5 text-[12px] font-semibold text-[var(--brand)] shadow-[var(--shadow-card)]">
-        See exactly which rules fired — and why
-      </div>
-      <div className="stage-frame relative pad-panel min-h-[420px] flex flex-col pt-8 md:pt-10">
+      <div className="stage-frame relative pad-panel min-h-[420px] flex flex-col">
         <div className="flex-1 transition-opacity duration-300">
           {index === 0 && <MonitoringSlide />}
           {index === 1 && <AlertSlide />}

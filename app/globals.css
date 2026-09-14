@@ -400,10 +400,6 @@ button.btn-ghost {
 }
 
 /* Hero product mock — padding must win over Tailwind preflight */
-.hero-alert-chip {
-  padding: 28px 28px !important;
-}
-
 .hero-alert-panel {
   padding: 32px !important;
 }

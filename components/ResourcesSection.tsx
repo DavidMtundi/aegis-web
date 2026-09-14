@@ -39,21 +39,23 @@ export default function ResourcesSection() {
   return (
     <section id="resources" className="section bg-[var(--bg-soft)]">
       <div className="container-x">
-        <div className="section-intro max-w-2xl">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4 md:mb-5">
+        <div className="section-intro">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-4 md:mb-5">
             <p className="eyebrow !mb-0">Resources</p>
             <Link
               href="/faq"
-              className="text-[14px] font-semibold text-[var(--brand)] hover:text-[var(--brand-hover)] transition-colors inline-flex items-center gap-1.5"
+              className="text-[14px] font-semibold text-[var(--text)] hover:text-[var(--brand)] transition-colors inline-flex items-center gap-1.5"
             >
               Browse FAQ <ArrowIcon />
             </Link>
           </div>
-          <h2 className="heading-lg">Learn how modern monitoring should work</h2>
-          <p className="body-lg">
-            Short reads on explainable alerts, rule governance and the path from mobile money
-            transaction to case — written for African compliance teams.
-          </p>
+          <div className="max-w-2xl">
+            <h2 className="heading-lg">Learn how modern monitoring should work</h2>
+            <p className="body-lg">
+              Short reads on explainable alerts, rule governance and the path from mobile money
+              transaction to case — written for African compliance teams.
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-px bg-[var(--border)] rounded-2xl overflow-hidden border border-[var(--border)]">
