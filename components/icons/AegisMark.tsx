@@ -1,0 +1,29 @@
+export default function AegisMark({ className = '' }: { className?: string }) {
+  const brand = 'var(--brand, #2b63f1)'
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      fill="none"
+      className={className}
+      aria-hidden
+    >
+      {/* Geometric aegis shield */}
+      <path
+        d="M16 2.25L26.75 6.1v8.55c0 7.55-4.7 12.85-10.75 15.1C9.95 27.5 5.25 22.2 5.25 14.65V6.1L16 2.25z"
+        fill={brand}
+      />
+      {/* Stylized A — legs */}
+      <path
+        d="M16 8.6l5.55 13.05h-2.4L18.05 18.4h-4.1l-1.1 3.25h-2.4L16 8.6z"
+        fill="#fff"
+      />
+      {/* Counter (cut the A hole) */}
+      <path d="M16 11.35l-1.55 4.05h3.1L16 11.35z" fill={brand} />
+      {/* Crossbar with ledger tick gap */}
+      <rect x="12.15" y="16.55" width="2.55" height="1.35" rx="0.35" fill="#fff" />
+      <rect x="17.3" y="16.55" width="2.55" height="1.35" rx="0.35" fill="#fff" />
+    </svg>
+  )
+}
