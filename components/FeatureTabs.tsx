@@ -50,7 +50,7 @@ const tabs = [
 function RulesPanel() {
   return (
     <div className="bg-[#0f1117] h-full min-h-[320px] sm:min-h-[380px] flex flex-col min-w-0">
-      <div className="px-5 py-4 sm:px-7 sm:py-5 md:px-9 md:py-6 flex items-center justify-between gap-3 border-b border-white/10 min-w-0">
+      <div className="px-6 py-5 sm:px-8 sm:py-6 md:px-10 md:py-7 lg:px-12 flex items-center justify-between gap-3 border-b border-white/10 min-w-0">
         <span className="font-mono text-[11px] sm:text-[12px] text-zinc-400 tracking-wide truncate">
           RAPID_MOVEMENT_001.json
         </span>
@@ -58,7 +58,7 @@ function RulesPanel() {
           ACTIVE
         </span>
       </div>
-      <div className="flex-1 px-5 py-5 sm:px-7 sm:py-6 md:px-9 md:py-8 overflow-x-auto min-w-0">
+      <div className="flex-1 px-6 py-6 sm:px-8 sm:py-7 md:px-10 md:py-9 lg:px-12 lg:py-10 overflow-x-auto min-w-0">
         <pre className="font-mono text-[12px] sm:text-[13px] leading-[1.7] text-zinc-300 whitespace-pre">{`{
   "code": "RAPID_MOVEMENT_001",
   "name": "Rapid Movement of Funds",
@@ -80,8 +80,8 @@ function RulesPanel() {
 
 function AlertsPanel() {
   return (
-    <div className="bg-[var(--bg)] h-full min-h-[320px] sm:min-h-[380px] px-5 py-6 sm:px-7 sm:py-7 md:px-9 md:py-9 min-w-0">
-      <div className="flex items-start justify-between gap-3 mb-7 min-w-0">
+    <div className="bg-[var(--bg)] h-full min-h-[320px] sm:min-h-[380px] px-6 py-7 sm:px-8 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12 min-w-0">
+      <div className="flex items-start justify-between gap-4 mb-7 min-w-0">
         <div className="min-w-0">
           <div className="text-xs font-mono text-[var(--brand)] mb-2 break-all sm:break-normal">ALT-9804 · RAPID_MOVEMENT_001</div>
           <h4 className="text-lg font-bold text-[var(--text)]">Rapid Movement of Funds</h4>
@@ -107,7 +107,7 @@ function AlertsPanel() {
 
 function CasesPanel() {
   return (
-    <div className="bg-[var(--bg)] h-full min-h-[320px] sm:min-h-[380px] px-5 py-6 sm:px-7 sm:py-7 md:px-9 md:py-9 min-w-0">
+    <div className="bg-[var(--bg)] h-full min-h-[320px] sm:min-h-[380px] px-6 py-7 sm:px-8 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12 min-w-0">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-7">
         <div>
           <div className="text-[11px] font-semibold uppercase tracking-wide text-[var(--text-dim)]">Open case</div>

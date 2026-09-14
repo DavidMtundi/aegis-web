@@ -125,7 +125,13 @@ export default function SavingsCalculator() {
               {secondary.map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`pad-cell ${i === 0 ? 'sm:!pl-0' : ''} ${i === secondary.length - 1 ? 'sm:!pr-0' : ''}`}
+                  className={`py-7 md:py-8 px-0 ${
+                    i === 0
+                      ? 'sm:pr-8 md:pr-10'
+                      : i === secondary.length - 1
+                        ? 'sm:pl-8 md:pl-10'
+                        : 'sm:px-8 md:px-10'
+                  }`}
                 >
                   <div className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--text-dim)] mb-2.5">
                     {stat.label}

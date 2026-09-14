@@ -40,23 +40,17 @@ function MonitoringSlide() {
     { score: 92, entity: 'Apex Logistics Ltd', status: 'review' as const, statusLabel: 'Under review', type: 'RTGS', amount: 'KES 1.45M' },
     { score: 18, entity: 'Grace Wanjiku', status: 'approved' as const, statusLabel: 'Cleared', type: 'M-Pesa', amount: 'KES 12,400' },
     { score: 76, entity: 'Serenity Holdings', status: 'pending' as const, statusLabel: 'Awaiting evidence', type: 'SWIFT', amount: 'USD 48,200' },
-    { score: 31, entity: 'Orbit Payments', status: 'approved' as const, statusLabel: 'Cleared', type: 'Card', amount: 'KES 89,050' },
   ]
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <div>
-          <div className="text-sm font-semibold text-[var(--text)]">Live monitoring</div>
-          <p className="text-[12px] text-[var(--text-dim)] mt-1 leading-snug">
-            See which rules fired — and why
-          </p>
-        </div>
+      <div className="mb-6 flex items-end justify-between gap-3">
+        <div className="text-sm font-semibold text-[var(--text)]">Live monitoring</div>
         <div className="text-[11px] font-medium text-[var(--text-dim)] tabular-nums shrink-0">Updated 2s ago</div>
       </div>
-      <div className="overflow-x-auto rounded-xl border border-[var(--border)] bg-[var(--bg)] -mx-1 px-0">
-        <div className="min-w-[520px]">
-          <div className="hero-table-row grid grid-cols-[48px_1.4fr_1.1fr_0.6fr_0.9fr] gap-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--text-dim)] border-b border-[var(--border)]">
+      <div className="overflow-x-auto rounded-xl border border-[var(--border)] bg-[var(--bg)]">
+        <div className="min-w-[480px]">
+          <div className="hero-table-row grid grid-cols-[48px_1.5fr_1.1fr_0.7fr_0.9fr] gap-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--text-dim)] border-b border-[var(--border)]">
             <span>Score</span>
             <span>Entity</span>
             <span>Status</span>
@@ -67,9 +61,13 @@ function MonitoringSlide() {
             {rows.map((row) => (
               <div
                 key={row.entity}
-                className="hero-table-row grid grid-cols-[48px_1.4fr_1.1fr_0.6fr_0.9fr] gap-2 items-center text-[13px] text-[var(--text-muted)]"
+                className="hero-table-row grid grid-cols-[48px_1.5fr_1.1fr_0.7fr_0.9fr] gap-2 items-center text-[13px] text-[var(--text-muted)]"
               >
-                <span className={`font-bold tabular-nums text-[14px] ${row.score >= 70 ? 'text-red-600' : row.score >= 40 ? 'text-amber-600' : 'text-emerald-600'}`}>
+                <span
+                  className={`font-bold tabular-nums text-[14px] ${
+                    row.score >= 70 ? 'text-red-600' : row.score >= 40 ? 'text-amber-600' : 'text-emerald-600'
+                  }`}
+                >
                   {row.score}
                 </span>
                 <span className="font-semibold text-[var(--text)] truncate">{row.entity}</span>
@@ -88,18 +86,13 @@ function MonitoringSlide() {
 function AlertSlide() {
   return (
     <div>
-      <div className="mb-5">
-        <div className="text-sm font-semibold text-[var(--text)]">Explainable alert</div>
-        <p className="text-[12px] text-[var(--text-dim)] mt-1 leading-snug">
-          Every condition that fired — with measured values
-        </p>
-      </div>
-      <div className="hero-alert-panel rounded-xl border border-[var(--border)] bg-[var(--bg)]">
-        <div className="flex items-start justify-between gap-4 mb-6">
-          <div className="min-w-0 pr-2">
-            <div className="text-xs font-mono text-[var(--brand)] mb-2">ALT-9804 · RAPID_MOVEMENT_001</div>
+      <div className="mb-6 text-sm font-semibold text-[var(--text)]">Explainable alert</div>
+      <div className="rounded-xl border border-[var(--border)] bg-[var(--bg)] hero-alert-panel">
+        <div className="flex items-start justify-between gap-4 mb-8">
+          <div className="min-w-0">
+            <div className="text-xs font-mono text-[var(--brand)] mb-2">ALT-9804</div>
             <h4 className="text-lg font-bold text-[var(--text)] leading-snug">Rapid Movement of Funds</h4>
-            <p className="text-sm text-[var(--text-muted)] mt-2">Focal entity: Apex Logistics Ltd</p>
+            <p className="text-sm text-[var(--text-muted)] mt-2">Apex Logistics Ltd</p>
           </div>
           <div className="text-right shrink-0">
             <div className="text-[10px] uppercase tracking-wide text-[var(--text-dim)] mb-1.5">Risk</div>
@@ -108,9 +101,9 @@ function AlertSlide() {
         </div>
         <div className="space-y-3">
           {[
-            { label: 'Credit amount', value: 'KES 1,450,000 ≥ 500,000' },
-            { label: 'Debit amount', value: 'KES 1,320,000 ≥ 400,000' },
-            { label: 'Transaction count', value: '17 ≥ 5 in lookback' },
+            { label: 'Credit', value: 'KES 1.45M ≥ 500k' },
+            { label: 'Debit', value: 'KES 1.32M ≥ 400k' },
+            { label: 'Count', value: '17 ≥ 5 in lookback' },
           ].map((item) => (
             <div
               key={item.label}
@@ -132,41 +125,39 @@ function AlertSlide() {
 function CaseSlide() {
   return (
     <div>
-      <div className="mb-5">
-        <div className="text-sm font-semibold text-[var(--text)]">Case workspace</div>
-        <p className="text-[12px] text-[var(--text-dim)] mt-1 leading-snug">
-          Investigation trail ready for compliance sign-off
-        </p>
-      </div>
-      <div className="hero-alert-panel rounded-xl border border-[var(--border)] bg-[var(--bg)] space-y-5">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--text-dim)]">Open case</div>
-            <div className="text-xl font-bold text-[var(--text)] mt-1">CAS-8821</div>
-          </div>
-          <StatusPill label="In investigation" tone="review" />
+      <div className="mb-8 flex items-start justify-between gap-4">
+        <div>
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-[var(--text-dim)]">Open case</div>
+          <div className="text-2xl font-bold text-[var(--text)] mt-2 tracking-tight">CAS-8821</div>
         </div>
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { label: 'Linked alerts', value: '2' },
-            { label: 'Risk score', value: '92', accent: true },
-            { label: 'Owner', value: 'MLRO' },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="hero-metric-cell rounded-xl bg-white border border-[var(--border)]"
-            >
-              <div className="text-[10px] uppercase tracking-wide text-[var(--text-dim)] mb-2">{item.label}</div>
-              <div className={`font-bold ${item.accent ? 'text-red-600' : 'text-[var(--text)]'}`}>{item.value}</div>
+        <StatusPill label="In investigation" tone="review" />
+      </div>
+
+      <div className="grid grid-cols-3 gap-6 md:gap-8 mb-8 pb-8 border-b border-[var(--border)]">
+        {[
+          { label: 'Linked alerts', value: '2' },
+          { label: 'Risk score', value: '92', accent: true },
+          { label: 'Owner', value: 'MLRO' },
+        ].map((item) => (
+          <div key={item.label}>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--text-dim)] mb-2">{item.label}</div>
+            <div className={`text-xl font-semibold tabular-nums ${item.accent ? 'text-red-600' : 'text-[var(--text)]'}`}>
+              {item.value}
             </div>
-          ))}
-        </div>
-        <ul className="space-y-3 text-sm text-[var(--text-muted)] leading-relaxed">
-          <li className="flex gap-2.5"><span className="text-[var(--brand)]">•</span> Velocity rule correlated with screening hit</li>
-          <li className="flex gap-2.5"><span className="text-[var(--brand)]">•</span> UBO network reviewed against watchlists</li>
-          <li className="flex gap-2.5"><span className="text-[var(--brand)]">•</span> Decision pending compliance sign-off</li>
-        </ul>
+          </div>
+        ))}
       </div>
+
+      <ul className="space-y-4 text-[14px] text-[var(--text-muted)] leading-relaxed">
+        <li className="flex gap-3">
+          <span className="text-[var(--brand)] mt-0.5">•</span>
+          <span>Velocity rule correlated with screening hit</span>
+        </li>
+        <li className="flex gap-3">
+          <span className="text-[var(--brand)] mt-0.5">•</span>
+          <span>Decision pending MLRO sign-off</span>
+        </li>
+      </ul>
     </div>
   )
 }
@@ -183,19 +174,19 @@ function ProductCarousel() {
   useEffect(() => {
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % slideMeta.length)
-    }, 5200)
+    }, 6200)
     return () => window.clearInterval(id)
   }, [])
 
   return (
-    <div className="relative w-full max-w-[620px] ml-auto">
-      <div className="stage-frame relative pad-panel min-h-[420px] flex flex-col">
+    <div className="relative w-full max-w-[560px] ml-auto">
+      <div className="stage-frame relative pad-panel min-h-[400px] flex flex-col">
         <div className="flex-1 transition-opacity duration-300">
           {index === 0 && <MonitoringSlide />}
           {index === 1 && <AlertSlide />}
           {index === 2 && <CaseSlide />}
         </div>
-        <div className="mt-6 flex items-center justify-between gap-3 pt-5 border-t border-[var(--border)]">
+        <div className="mt-8 flex items-center justify-between gap-3 pt-6 border-t border-[var(--border)]">
           <div className="flex items-center gap-1">
             {slideMeta.map((slide, i) => (
               <button
@@ -240,23 +231,22 @@ function ProductCarousel() {
 export default function Hero() {
   return (
     <section className="relative pt-[72px] overflow-hidden bg-[var(--bg)]">
-      <div className="absolute inset-0 ledger-rules pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_70%_0%,rgba(43,99,241,0.07),transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 ledger-rules opacity-60 pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-[380px] bg-[radial-gradient(ellipse_at_75%_0%,rgba(43,99,241,0.05),transparent_55%)] pointer-events-none" />
 
-      <div className="container-x relative section !pb-20 !pt-16 md:!pt-24 md:!pb-24">
-        <div className="grid lg:grid-cols-[0.88fr_1.12fr] gap-12 xl:gap-16 items-center">
+      <div className="container-x relative section !pb-20 !pt-16 md:!pt-24 md:!pb-28">
+        <div className="grid lg:grid-cols-[1fr_0.95fr] gap-14 xl:gap-20 items-center">
           <div className="max-w-xl">
-            <div className="pill fade-up mb-7">AML monitoring · Kenya & Africa</div>
+            <div className="pill fade-up mb-8">AML monitoring · Kenya & Africa</div>
 
-            <h1 className="heading-xl mb-6 text-[var(--text)]">
+            <h1 className="heading-xl mb-8 text-[var(--text)] !leading-[1.15]">
               Monitor mobile money, cards and banking rails — without drowning in{' '}
               <span className="text-[var(--text-muted)]">false positives.</span>
             </h1>
 
-            <p className="body-lg mb-0 max-w-lg !pb-12 md:!pb-14">
-              Aegis is AML transaction monitoring and case investigation for banks, SACCOs and
-              fintechs in Kenya and across Africa. Compliance owns the rules. Every alert explains
-              itself. Every decision leaves a trail you can defend.
+            <p className="body-lg mb-0 max-w-md !pb-12 md:!pb-14 !leading-relaxed">
+              AML monitoring and case investigation for banks, SACCOs and fintechs across Kenya and
+              Africa. Compliance owns the rules. Every decision leaves a trail you can defend.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 max-w-md sm:max-w-none !mt-0">
