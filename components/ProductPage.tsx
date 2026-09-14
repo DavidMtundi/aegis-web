@@ -58,23 +58,37 @@ export default function ProductPage({ page }: { page: ProductPageContent }) {
       </section>
 
       <section className="section bg-[var(--bg)] !pt-0">
-        <div className="container-x space-y-8 md:space-y-10">
-          {page.features.map((feature) => (
-            <article key={feature.title} className="stage-frame pad-panel">
-              <h2 className="heading-md mb-4">{feature.title}</h2>
-              <p className="text-[15px] md:text-base text-[var(--text-muted)] leading-relaxed mb-6 max-w-3xl">
-                {feature.body}
-              </p>
-              <ul className="space-y-3">
-                {feature.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2.5 text-[15px] text-[var(--text)]">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)] shrink-0" />
-                    <span className="leading-relaxed">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+        <div className="container-x">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden divide-y divide-[var(--border)]">
+            {page.features.map((feature, index) => (
+              <article
+                key={feature.title}
+                className="grid lg:grid-cols-[4.5rem_minmax(0,1.15fr)_minmax(0,1fr)] gap-5 lg:gap-10 pad-panel"
+              >
+                <span className="text-[13px] font-semibold tracking-[0.14em] text-[var(--brand)] tabular-nums pt-1">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div className="min-w-0">
+                  <h2 className="text-[1.35rem] md:text-[1.5rem] font-semibold tracking-tight text-[var(--text)] leading-snug mb-3">
+                    {feature.title}
+                  </h2>
+                  <p className="text-[15px] md:text-[16px] text-[var(--text-muted)] leading-relaxed max-w-xl">
+                    {feature.body}
+                  </p>
+                </div>
+                <ul className="space-y-3.5 lg:pt-1">
+                  {feature.points.map((point) => (
+                    <li key={point} className="flex items-start gap-3 text-[15px] text-[var(--text)]">
+                      <span className="mt-0.5 shrink-0 text-[var(--brand)] font-semibold" aria-hidden>
+                        ✓
+                      </span>
+                      <span className="leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

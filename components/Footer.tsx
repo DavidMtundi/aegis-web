@@ -10,17 +10,17 @@ export default function Footer() {
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-5 w-fit">
               <AegisMark className="w-7 h-7" />
-              <span className="text-lg font-bold tracking-tight text-[var(--text)]">aegis</span>
+              <span className="text-xl font-bold tracking-tight text-[var(--text)]">aegis</span>
             </Link>
-            <p className="text-[14px] text-[var(--text-muted)] max-w-xs leading-relaxed">
+            <p className="text-[16px] text-[var(--text-muted)] max-w-xs leading-relaxed">
               AML monitoring and investigation for banks, SACCOs and fintechs in Kenya and across
               Africa.
             </p>
           </div>
 
           <div>
-            <h4 className="text-[13px] font-semibold text-[var(--text)] mb-5">Platform</h4>
-            <ul className="space-y-3.5 text-[14px] text-[var(--text-muted)]">
+            <h4 className="text-[15px] font-semibold text-[var(--text)] mb-5">Platform</h4>
+            <ul className="space-y-3.5 text-[16px] text-[var(--text-muted)]">
               {platformItems.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="hover:text-[var(--text)] transition">
@@ -32,8 +32,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-[13px] font-semibold text-[var(--text)] mb-5">Solutions</h4>
-            <ul className="space-y-3.5 text-[14px] text-[var(--text-muted)]">
+            <h4 className="text-[15px] font-semibold text-[var(--text)] mb-5">Solutions</h4>
+            <ul className="space-y-3.5 text-[16px] text-[var(--text-muted)]">
               {solutionsItems.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="hover:text-[var(--text)] transition">
@@ -50,8 +50,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-[13px] font-semibold text-[var(--text)] mb-5">Company</h4>
-            <ul className="space-y-3.5 text-[14px] text-[var(--text-muted)]">
+            <h4 className="text-[15px] font-semibold text-[var(--text)] mb-5">Company</h4>
+            <ul className="space-y-3.5 text-[16px] text-[var(--text-muted)]">
               <li>
                 <Link href="/how-it-works" className="hover:text-[var(--text)] transition">
                   How it works
@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between gap-4 text-[12px] text-[var(--text-dim)]">
+        <div className="pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between gap-4 text-[14px] text-[var(--text-dim)]">
           <div>© 2026 Aegis. All rights reserved.</div>
           <div className="flex gap-6">
             <Link href="/#contact" className="hover:text-[var(--text)] transition">
